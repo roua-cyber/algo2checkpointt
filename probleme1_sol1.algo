@@ -1,0 +1,55 @@
+ALGORITHM Prob1_sol1
+VAR
+    Set_1 : ARRAY_OF float[10];
+    Set_2 : ARRAY_OF float[10];
+    sum : float:=0 ;
+    trouve :BOOLEAN ;
+    i : INTEGER  ;
+    j : INTEGER  ; 
+BEGIN
+    write("the first array");
+    read(Set_1);
+    write("the second array");
+    read(Set_2);
+
+    FOR i FROM 0 TO Set_1.length - 1  DO
+
+        trouve:=false ;
+        j:=0 ;
+
+        WHILE (trouve=false) and (j<Set_2.length ) DO
+
+            IF (Set_1[i]=Set_2[j]) THEN
+                trouve:=true ;
+            END_IF
+            j:=j+1 ;
+
+        END_WHILE
+
+        IF (trouve=false) THEN
+            sum:=sum+Set_1[i];
+        END_IF
+
+    END_FOR 
+
+    FOR i FROM 0 TO Set_2.length - 1  DO
+
+        trouve:=false ;
+        j:=0 ;
+
+        WHILE (trouve=false) and (j<Set_1.length) DO
+
+            IF (Set_1[i]=Set_2[j]) THEN
+                ok:=true ;
+            END_IF
+            j:=j+1 ;
+            
+        END_WHILE
+
+        IF (trouve=false) THEN
+            sum:=sum+Set_2[i];
+        END_IF
+
+    END_FOR
+    write(sum);
+END

@@ -1,0 +1,45 @@
+
+ALGORITHM prob2_sol2
+VAR
+    Set_1 : ARRAY_OF INTEGER[10];
+    Set_2 : ARRAY_OF INTEGER[10];
+    clés : ARRAY_OF INTEGER[20];
+    sum : INTEGER:=0 ;
+    trouve :BOOLEAN ;
+    i : INTEGER  ;
+    j : INTEGER  ; 
+    sum : INTEGER:=0 ;
+    count : INTEGER ;
+BEGIN
+    write("the first array");
+    read(Set_1);
+    write("the second array");
+    read(Set_2);
+
+    FOR i FROM 0 TO Set_1.length - 1  DO
+        trouve:=false ;
+        j:=0 ;
+        count:=1;
+        WHILE (trouve=false) and (j<Set_2.length) DO
+            IF (Set_1[i]=Set_2[j]) THEN
+                trouve:=true ;
+                count:=2;
+                htab.insert(Set_1[i],count);
+            END_IF
+            j:=j+1 ;
+        END_WHILE
+        
+    END_FOR 
+
+    clés:=htab.keys ;
+    i:=0;
+    WHILE (i < clés.length) DO
+        sum:=sum+(htab.get(clés[i])*2) ;
+        i:=i+1 ;
+    END_WHILE
+
+ write(sum);
+    
+   
+END
+

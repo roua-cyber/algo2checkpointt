@@ -1,0 +1,74 @@
+
+ALGORITHM Prob1_sol2
+VAR
+    Set_1 : ARRAY_OF float[10];
+    Set_2 : ARRAY_OF float[10];
+    clés : ARRAY_OF float[20];
+    trouve : BOOLEAN ;
+    i : INTEGER  ;
+    j : INTEGER  ; 
+    sum : float:=0 ;
+    htab :HASH_TABLE<float,INTEGER> ;
+
+BEGIN
+    write("the first array");
+    read(Set_1);
+    write("the second array");
+    read(Set_2);
+    FOR i FROM 0 TO Set_1.length  DO
+        trouve:=false ;
+        j:=0 ;
+        WHILE (trouve=false) and (j<Set_2.length) DO
+
+            IF (Set_1[i]=Set_2[j]) THEN
+                trouve:=true ;
+            END_IF
+            j:=j+1 ;
+
+        END_WHILE
+
+        IF (trouve=false) THEN
+            htab.insert(Set_1[i],1);
+        ELSE
+            htab.insert(Set_1[i],2);
+        END_IF
+
+    END_FOR 
+
+    FOR i FROM 0 TO Set_2.length  DO
+        trouve:=false ;
+        j:=0 ;
+        WHILE (trouve=false) and (j<Set_2.length) DO
+
+            IF (Set_1[i]=Set_2[j]) THEN
+                trouve:=true ;
+            END_IF
+            j:=j+1 ;
+
+        END_WHILE
+
+        IF (trouve=false) THEN
+            htab.insert(Set_2[i],1);
+        ELSE
+            htab.insert(Set_2[i],2);
+        END_IF
+        
+    END_FOR 
+
+    clés:=htab.keys ;
+    i:=0;
+    WHILE (i < clés.length) DO
+        if (htab.get(clés[i])=1)
+        {
+          sum:=sum+(htab.get(clés[i])) ;
+        }
+        i:=i+1 ;
+    END_WHILE
+
+ write(sum);
+    
+   
+END
+
+
+
